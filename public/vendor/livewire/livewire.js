@@ -26,7 +26,7 @@
     }
     function _objectSpread2(target) {
         for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i] != null ? arguments[i] : {};
+            var source = arguments[i] !== null ? arguments[i] : {};
             i % 2
                 ? ownKeys$1(Object(source), !0).forEach(function (key) {
                       _defineProperty(target, key, source[key]);
@@ -190,18 +190,18 @@
     }
     function _iterableToArray(iter) {
         if (
-            (typeof Symbol != "undefined" && iter[Symbol.iterator] != null) ||
-            iter["@@iterator"] != null
+            (typeof Symbol != "undefined" && iter[Symbol.iterator] !== null) ||
+            iter["@@iterator"] !== null
         )
             return Array.from(iter);
     }
     function _iterableToArrayLimit(arr, i) {
         var _i =
-            arr == null
+            arr === null
                 ? null
                 : (typeof Symbol != "undefined" && arr[Symbol.iterator]) ||
                   arr["@@iterator"];
-        if (_i != null) {
+        if (_i !== null) {
             var _s,
                 _e,
                 _arr = [],
@@ -218,7 +218,7 @@
                 (_d = !0), (_e = err);
             } finally {
                 try {
-                    _n || _i.return == null || _i.return();
+                    _n || _i.return === null || _i.return();
                 } finally {
                     if (_d) throw _e;
                 }
@@ -242,7 +242,7 @@
         }
     }
     function _arrayLikeToArray(arr, len) {
-        (len == null || len > arr.length) && (len = arr.length);
+        (len === null || len > arr.length) && (len = arr.length);
         for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
         return arr2;
     }
@@ -496,7 +496,7 @@
      * Released under the MIT License.
      */ var isobject = function (val) {
             return (
-                val != null &&
+                val !== null &&
                 typeof val == "object" &&
                 !1 === Array.isArray(val)
             );
@@ -1140,7 +1140,7 @@
                 : (argument > 0 ? floor : ceil)(argument);
         },
         requireObjectCoercible = function (it) {
-            if (it == null) throw TypeError("Can't call method on " + it);
+            if (it === null) throw TypeError("Can't call method on " + it);
             return it;
         },
         createMethod$3 = function (CONVERT_TO_STRING) {
@@ -1190,7 +1190,7 @@
                     require: function (path, base) {
                         return commonjsRequire(
                             path,
-                            base == null ? module.path : base
+                            base === null ? module.path : base
                         );
                     },
                 }),
@@ -1774,7 +1774,7 @@
                   (IteratorPrototype$2 = PrototypeOfArrayIteratorPrototype))
             : (BUGGY_SAFARI_ITERATORS$1 = !0));
     var NEW_ITERATOR_PROTOTYPE =
-        IteratorPrototype$2 == null ||
+        IteratorPrototype$2 === null ||
         fails(function () {
             var test = {};
             return IteratorPrototype$2[ITERATOR$5].call(test) !== test;
@@ -2176,7 +2176,7 @@
               },
         ITERATOR$2 = wellKnownSymbol("iterator"),
         getIteratorMethod = function (it) {
-            if (it != null)
+            if (it !== null)
                 return (
                     it[ITERATOR$2] || it["@@iterator"] || iterators[classof(it)]
                 );
@@ -2202,7 +2202,7 @@
                         argumentsLength > 2 ? arguments[2] : void 0,
                         2
                     )),
-                iteratorMethod == null ||
+                iteratorMethod === null ||
                     (C == Array && isArrayIteratorMethod(iteratorMethod)))
             )
                 for (
@@ -2277,7 +2277,7 @@
         path.Array.from;
     var UNSCOPABLES = wellKnownSymbol("unscopables"),
         ArrayPrototype = Array.prototype;
-    ArrayPrototype[UNSCOPABLES] == null &&
+    ArrayPrototype[UNSCOPABLES] === null &&
         objectDefineProperty.f(ArrayPrototype, UNSCOPABLES, {
             configurable: !0,
             value: objectCreate(null),
@@ -2746,7 +2746,7 @@
         speciesConstructor = function (O, defaultConstructor) {
             var S,
                 C = anObject(O).constructor;
-            return void 0 === C || (S = anObject(C)[SPECIES$1]) == null
+            return void 0 === C || (S = anObject(C)[SPECIES$1]) === null
                 ? defaultConstructor
                 : aFunction(S);
         },
@@ -3980,7 +3980,7 @@
                 (this.mode = input.mode),
                 (this.signal = input.signal),
                 body ||
-                    input._bodyInit == null ||
+                    input._bodyInit === null ||
                     ((body = input._bodyInit), (input.bodyUsed = !0));
         } else this.url = String(input);
         if (
@@ -4213,7 +4213,7 @@
             (global$1.Headers = Headers),
             (global$1.Request = Request),
             (global$1.Response = Response)),
-        Element.prototype.getAttributeNames == null &&
+        Element.prototype.getAttributeNames === null &&
             (Element.prototype.getAttributeNames = function () {
                 for (
                     var attributes = this.attributes,
@@ -4411,7 +4411,7 @@
                                     });
                             var modal =
                                 document.getElementById("livewire-error");
-                            void 0 !== modal && modal != null
+                            void 0 !== modal && modal !== null
                                 ? (modal.innerHTML = "")
                                 : (((modal = document.createElement("div")).id =
                                       "livewire-error"),
