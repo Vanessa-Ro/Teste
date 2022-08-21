@@ -1,10 +1,10 @@
 !(function (global, factory) {
-    "object" == typeof exports && "undefined" != typeof module
+    typeof exports == "object" && typeof module != "undefined"
         ? (module.exports = factory())
-        : "function" == typeof define && define.amd
+        : typeof define == "function" && define.amd
         ? define(factory)
         : ((global =
-              "undefined" != typeof globalThis
+              typeof globalThis != "undefined"
                   ? globalThis
                   : global || self).Livewire = factory());
 })(this, function () {
@@ -26,7 +26,7 @@
     }
     function _objectSpread2(target) {
         for (var i = 1; i < arguments.length; i++) {
-            var source = null != arguments[i] ? arguments[i] : {};
+            var source = arguments[i] != null ? arguments[i] : {};
             i % 2
                 ? ownKeys$1(Object(source), !0).forEach(function (key) {
                       _defineProperty(target, key, source[key]);
@@ -48,13 +48,13 @@
     }
     function _typeof(obj) {
         return (_typeof =
-            "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
+            typeof Symbol == "function" && typeof Symbol.iterator == "symbol"
                 ? function (obj) {
                       return typeof obj;
                   }
                 : function (obj) {
                       return obj &&
-                          "function" == typeof Symbol &&
+                          typeof Symbol == "function" &&
                           obj.constructor === Symbol &&
                           obj !== Symbol.prototype
                           ? "symbol"
@@ -95,7 +95,7 @@
         );
     }
     function _inherits(subClass, superClass) {
-        if ("function" != typeof superClass && null !== superClass)
+        if (typeof superClass != "function" && superClass !== null)
             throw new TypeError(
                 "Super expression must either be null or a function"
             );
@@ -120,9 +120,9 @@
             })(o, p);
     }
     function _isNativeReflectConstruct() {
-        if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
+        if (typeof Reflect == "undefined" || !Reflect.construct) return !1;
         if (Reflect.construct.sham) return !1;
-        if ("function" == typeof Proxy) return !0;
+        if (typeof Proxy == "function") return !0;
         try {
             return (
                 Boolean.prototype.valueOf.call(
@@ -142,7 +142,7 @@
         return self;
     }
     function _possibleConstructorReturn(self, call) {
-        return !call || ("object" != typeof call && "function" != typeof call)
+        return !call || (typeof call != "object" && typeof call != "function")
             ? _assertThisInitialized(self)
             : call;
     }
@@ -190,18 +190,18 @@
     }
     function _iterableToArray(iter) {
         if (
-            ("undefined" != typeof Symbol && null != iter[Symbol.iterator]) ||
-            null != iter["@@iterator"]
+            (typeof Symbol != "undefined" && iter[Symbol.iterator] != null) ||
+            iter["@@iterator"] != null
         )
             return Array.from(iter);
     }
     function _iterableToArrayLimit(arr, i) {
         var _i =
-            null == arr
+            arr == null
                 ? null
-                : ("undefined" != typeof Symbol && arr[Symbol.iterator]) ||
+                : (typeof Symbol != "undefined" && arr[Symbol.iterator]) ||
                   arr["@@iterator"];
-        if (null != _i) {
+        if (_i != null) {
             var _s,
                 _e,
                 _arr = [],
@@ -218,7 +218,7 @@
                 (_d = !0), (_e = err);
             } finally {
                 try {
-                    _n || null == _i.return || _i.return();
+                    _n || _i.return == null || _i.return();
                 } finally {
                     if (_d) throw _e;
                 }
@@ -228,13 +228,13 @@
     }
     function _unsupportedIterableToArray(o, minLen) {
         if (o) {
-            if ("string" == typeof o) return _arrayLikeToArray(o, minLen);
+            if (typeof o == "string") return _arrayLikeToArray(o, minLen);
             var n = Object.prototype.toString.call(o).slice(8, -1);
             return (
-                "Object" === n && o.constructor && (n = o.constructor.name),
-                "Map" === n || "Set" === n
+                n === "Object" && o.constructor && (n = o.constructor.name),
+                n === "Map" || n === "Set"
                     ? Array.from(o)
-                    : "Arguments" === n ||
+                    : n === "Arguments" ||
                       /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)
                     ? _arrayLikeToArray(o, minLen)
                     : void 0
@@ -242,7 +242,7 @@
         }
     }
     function _arrayLikeToArray(arr, len) {
-        (null == len || len > arr.length) && (len = arr.length);
+        (len == null || len > arr.length) && (len = arr.length);
         for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
         return arr2;
     }
@@ -478,7 +478,7 @@
             tokenTag = document.head.querySelector('meta[name="csrf-token"]');
         return tokenTag
             ? tokenTag.content
-            : null !== (_window$livewire_toke = window.livewire_token) &&
+            : (_window$livewire_toke = window.livewire_token) !== null &&
               void 0 !== _window$livewire_toke
             ? _window$livewire_toke
             : void 0;
@@ -496,8 +496,8 @@
      * Released under the MIT License.
      */ var isobject = function (val) {
             return (
-                null != val &&
-                "object" == typeof val &&
+                val != null &&
+                typeof val == "object" &&
                 !1 === Array.isArray(val)
             );
         },
@@ -507,13 +507,13 @@
                 !isValidObject(target))
             )
                 return void 0 !== options.default ? options.default : target;
-            "number" == typeof path && (path = String(path));
+            typeof path == "number" && (path = String(path));
             const isArray = Array.isArray(path),
-                isString = "string" == typeof path,
+                isString = typeof path == "string",
                 splitChar = options.separator || ".",
                 joinChar =
                     options.joinChar ||
-                    ("string" == typeof splitChar ? splitChar : ".");
+                    (typeof splitChar == "string" ? splitChar : ".");
             if (!isString && !isArray) return target;
             if (isString && path in target)
                 return isValid(path, target, options)
@@ -525,8 +525,8 @@
             do {
                 let prop = segs[idx];
                 for (
-                    "number" == typeof prop && (prop = String(prop));
-                    prop && "\\" === prop.slice(-1);
+                    typeof prop == "number" && (prop = String(prop));
+                    prop && prop.slice(-1) === "\\";
 
                 )
                     prop = join(
@@ -565,22 +565,22 @@
      * Copyright (c) 2014-2018, Jon Schlinkert.
      * Released under the MIT License.
      */ function join(segs, joinChar, options) {
-        return "function" == typeof options.join
+        return typeof options.join == "function"
             ? options.join(segs)
             : segs[0] + joinChar + segs[1];
     }
     function split$1(path, splitChar, options) {
-        return "function" == typeof options.split
+        return typeof options.split == "function"
             ? options.split(path)
             : path.split(splitChar);
     }
     function isValid(key, target, options) {
         return (
-            "function" != typeof options.isValid || options.isValid(key, target)
+            typeof options.isValid != "function" || options.isValid(key, target)
         );
     }
     function isValidObject(val) {
-        return isobject(val) || Array.isArray(val) || "function" == typeof val;
+        return isobject(val) || Array.isArray(val) || typeof val == "function";
     }
     var _default$6 = (function () {
             function _default(el) {
@@ -995,7 +995,7 @@
                     arguments.length > 0 && void 0 !== arguments[0]
                         ? arguments[0]
                         : null;
-                null === node && (node = document);
+                node === null && (node = document);
                 var allEls = Array.from(
                         node.querySelectorAll("[wire\\:initial-data]")
                     ),
@@ -1066,7 +1066,7 @@
                 );
             },
             valueFromInput: function (el, component) {
-                if ("checkbox" === el.type) {
+                if (el.type === "checkbox") {
                     var modelName = wireDirectives(el).get("model").value,
                         modelValue = component.deferredActions[modelName]
                             ? component.deferredActions[modelName].payload.value
@@ -1075,7 +1075,7 @@
                         ? this.mergeCheckboxValueIntoArray(el, modelValue)
                         : !!el.checked && (el.getAttribute("value") || !0);
                 }
-                return "SELECT" === el.tagName && el.multiple
+                return el.tagName === "SELECT" && el.multiple
                     ? this.getSelectValues(el)
                     : el.value;
             },
@@ -1091,16 +1091,16 @@
             setInputValueFromModel: function (el, component) {
                 var modelString = wireDirectives(el).get("model").value,
                     modelValue = getValue(component.data, modelString);
-                ("input" === el.tagName.toLowerCase() && "file" === el.type) ||
+                (el.tagName.toLowerCase() === "input" && el.type === "file") ||
                     this.setInputValue(el, modelValue);
             },
             setInputValue: function (el, value) {
                 if (
                     (store$2.callHook("interceptWireModelSetValue", value, el),
-                    "radio" === el.type)
+                    el.type === "radio")
                 )
                     el.checked = el.value == value;
-                else if ("checkbox" === el.type)
+                else if (el.type === "checkbox")
                     if (Array.isArray(value)) {
                         var valueFound = !1;
                         value.forEach(function (val) {
@@ -1109,7 +1109,7 @@
                             (el.checked = valueFound);
                     } else el.checked = !!value;
                 else
-                    "SELECT" === el.tagName
+                    el.tagName === "SELECT"
                         ? this.updateSelect(el, value)
                         : ((value = void 0 === value ? "" : value),
                           (el.value = value));
@@ -1140,7 +1140,7 @@
                 : (argument > 0 ? floor : ceil)(argument);
         },
         requireObjectCoercible = function (it) {
-            if (null == it) throw TypeError("Can't call method on " + it);
+            if (it == null) throw TypeError("Can't call method on " + it);
             return it;
         },
         createMethod$3 = function (CONVERT_TO_STRING) {
@@ -1172,13 +1172,13 @@
             charAt: createMethod$3(!0),
         },
         commonjsGlobal =
-            "undefined" != typeof globalThis
+            typeof globalThis != "undefined"
                 ? globalThis
-                : "undefined" != typeof window
+                : typeof window != "undefined"
                 ? window
-                : "undefined" != typeof global
+                : typeof global != "undefined"
                 ? global
-                : "undefined" != typeof self
+                : typeof self != "undefined"
                 ? self
                 : {};
     function createCommonjsModule(fn, basedir, module) {
@@ -1190,7 +1190,7 @@
                     require: function (path, base) {
                         return commonjsRequire(
                             path,
-                            null == base ? module.path : base
+                            base == null ? module.path : base
                         );
                     },
                 }),
@@ -1208,10 +1208,10 @@
             return it && it.Math == Math && it;
         },
         global_1 =
-            check("object" == typeof globalThis && globalThis) ||
-            check("object" == typeof window && window) ||
-            check("object" == typeof self && self) ||
-            check("object" == typeof commonjsGlobal && commonjsGlobal) ||
+            check(typeof globalThis == "object" && globalThis) ||
+            check(typeof window == "object" && window) ||
+            check(typeof self == "object" && self) ||
+            check(typeof commonjsGlobal == "object" && commonjsGlobal) ||
             (function () {
                 return this;
             })() ||
@@ -1225,18 +1225,18 @@
         },
         descriptors = !fails(function () {
             return (
-                7 !=
                 Object.defineProperty({}, 1, {
                     get: function () {
                         return 7;
                     },
-                })[1]
+                })[1] !=
+                7
             );
         }),
         isObject = function (it) {
-            return "object" == typeof it
-                ? null !== it
-                : "function" == typeof it;
+            return typeof it == "object"
+                ? it !== null
+                : typeof it == "function";
         },
         document$3 = global_1.document,
         EXISTS = isObject(document$3) && isObject(document$3.createElement),
@@ -1247,12 +1247,12 @@
             !descriptors &&
             !fails(function () {
                 return (
-                    7 !=
                     Object.defineProperty(documentCreateElement("div"), "a", {
                         get: function () {
                             return 7;
                         },
-                    }).a
+                    }).a !=
+                    7
                 );
             }),
         anObject = function (it) {
@@ -1265,18 +1265,18 @@
             var fn, val;
             if (
                 PREFERRED_STRING &&
-                "function" == typeof (fn = input.toString) &&
+                typeof (fn = input.toString) == "function" &&
                 !isObject((val = fn.call(input)))
             )
                 return val;
             if (
-                "function" == typeof (fn = input.valueOf) &&
+                typeof (fn = input.valueOf) == "function" &&
                 !isObject((val = fn.call(input)))
             )
                 return val;
             if (
                 !PREFERRED_STRING &&
-                "function" == typeof (fn = input.toString) &&
+                typeof (fn = input.toString) == "function" &&
                 !isObject((val = fn.call(input)))
             )
                 return val;
@@ -1331,14 +1331,14 @@
         store$1 = global_1[SHARED] || setGlobal(SHARED, {}),
         sharedStore = store$1,
         functionToString = Function.toString;
-    "function" != typeof sharedStore.inspectSource &&
+    typeof sharedStore.inspectSource != "function" &&
         (sharedStore.inspectSource = function (it) {
             return functionToString.call(it);
         });
     var inspectSource = sharedStore.inspectSource,
         WeakMap$1 = global_1.WeakMap,
         nativeWeakMap =
-            "function" == typeof WeakMap$1 &&
+            typeof WeakMap$1 == "function" &&
             /native code/.test(inspectSource(WeakMap$1)),
         toObject = function (argument) {
             return Object(requireObjectCoercible(argument));
@@ -1461,7 +1461,7 @@
             return !Object("z").propertyIsEnumerable(0);
         })
             ? function (it) {
-                  return "String" == classofRaw(it)
+                  return classofRaw(it) == "String"
                       ? split.call(it, "")
                       : Object(it);
               }
@@ -1497,13 +1497,13 @@
                     unsafe = !!options && !!options.unsafe,
                     simple = !!options && !!options.enumerable,
                     noTargetGet = !!options && !!options.noTargetGet;
-                "function" == typeof value &&
-                    ("string" != typeof key ||
+                typeof value == "function" &&
+                    (typeof key != "string" ||
                         has$1(value, "name") ||
                         createNonEnumerableProperty(value, "name", key),
                     (state = enforceInternalState(value)).source ||
                         (state.source = TEMPLATE.join(
-                            "string" == typeof key ? key : ""
+                            typeof key == "string" ? key : ""
                         ))),
                     O !== global_1
                         ? (unsafe
@@ -1517,7 +1517,7 @@
                         : setGlobal(key, value);
             })(Function.prototype, "toString", function () {
                 return (
-                    ("function" == typeof this &&
+                    (typeof this == "function" &&
                         getInternalState(this).source) ||
                     inspectSource(this)
                 );
@@ -1525,7 +1525,7 @@
         }),
         path = global_1,
         aFunction$1 = function (variable) {
-            return "function" == typeof variable ? variable : void 0;
+            return typeof variable == "function" ? variable : void 0;
         },
         getBuiltIn = function (namespace, method) {
             return arguments.length < 2
@@ -1632,7 +1632,7 @@
             return (
                 value == POLYFILL ||
                 (value != NATIVE &&
-                    ("function" == typeof detection
+                    (typeof detection == "function"
                         ? fails(detection)
                         : !!detection))
             );
@@ -1703,7 +1703,7 @@
                       (O = toObject(O)),
                       has$1(O, IE_PROTO$1)
                           ? O[IE_PROTO$1]
-                          : "function" == typeof O.constructor &&
+                          : typeof O.constructor == "function" &&
                             O instanceof O.constructor
                           ? O.constructor.prototype
                           : O instanceof Object
@@ -1737,7 +1737,7 @@
                 );
             }),
         useSymbolAsUid =
-            nativeSymbol && !Symbol.sham && "symbol" == typeof Symbol.iterator,
+            nativeSymbol && !Symbol.sham && typeof Symbol.iterator == "symbol",
         WellKnownSymbolsStore = shared("wks"),
         Symbol$1 = global_1.Symbol,
         createWellKnownSymbol = useSymbolAsUid
@@ -1747,7 +1747,7 @@
             return (
                 (has$1(WellKnownSymbolsStore, name) &&
                     (nativeSymbol ||
-                        "string" == typeof WellKnownSymbolsStore[name])) ||
+                        typeof WellKnownSymbolsStore[name] == "string")) ||
                     (nativeSymbol && has$1(Symbol$1, name)
                         ? (WellKnownSymbolsStore[name] = Symbol$1[name])
                         : (WellKnownSymbolsStore[name] = createWellKnownSymbol(
@@ -1774,7 +1774,7 @@
                   (IteratorPrototype$2 = PrototypeOfArrayIteratorPrototype))
             : (BUGGY_SAFARI_ITERATORS$1 = !0));
     var NEW_ITERATOR_PROTOTYPE =
-        null == IteratorPrototype$2 ||
+        IteratorPrototype$2 == null ||
         fails(function () {
             var test = {};
             return IteratorPrototype$2[ITERATOR$5].call(test) !== test;
@@ -1862,7 +1862,7 @@
             function (O, Properties) {
                 var result;
                 return (
-                    null !== O
+                    O !== null
                         ? ((EmptyConstructor[PROTOTYPE] = anObject(O)),
                           (result = new EmptyConstructor()),
                           (EmptyConstructor[PROTOTYPE] = null),
@@ -1901,7 +1901,7 @@
             );
         },
         aPossiblePrototype = function (it) {
-            if (!isObject(it) && null !== it)
+            if (!isObject(it) && it !== null)
                 throw TypeError("Can't set " + String(it) + " as a prototype");
             return it;
         },
@@ -1981,7 +1981,7 @@
                     (!BUGGY_SAFARI_ITERATORS && nativeIterator) ||
                     getIterationMethod(DEFAULT),
                 anyNativeIterator =
-                    ("Array" == NAME && IterablePrototype.entries) ||
+                    (NAME == "Array" && IterablePrototype.entries) ||
                     nativeIterator;
             if (
                 (anyNativeIterator &&
@@ -1997,10 +1997,10 @@
                                       CurrentIteratorPrototype,
                                       IteratorPrototype
                                   )
-                                : "function" !=
-                                      typeof CurrentIteratorPrototype[
+                                : typeof CurrentIteratorPrototype[
                                           ITERATOR$4
-                                      ] &&
+                                      ] !=
+                                      "function" &&
                                   createNonEnumerableProperty(
                                       CurrentIteratorPrototype,
                                       ITERATOR$4,
@@ -2081,7 +2081,7 @@
         }
     );
     var aFunction = function (it) {
-            if ("function" != typeof it)
+            if (typeof it != "function")
                 throw TypeError(String(it) + " is not a function");
             return it;
         },
@@ -2142,15 +2142,15 @@
         TO_STRING_TAG$2 = wellKnownSymbol("toStringTag"),
         test = {};
     test[TO_STRING_TAG$2] = "z";
-    var toStringTagSupport = "[object z]" === String(test),
+    var toStringTagSupport = String(test) === "[object z]",
         TO_STRING_TAG$1 = wellKnownSymbol("toStringTag"),
         CORRECT_ARGUMENTS =
-            "Arguments" ==
             classofRaw(
                 (function () {
                     return arguments;
                 })()
-            ),
+            ) ==
+            "Arguments",
         tryGet = function (it, key) {
             try {
                 return it[key];
@@ -2162,21 +2162,21 @@
                   var O, tag, result;
                   return void 0 === it
                       ? "Undefined"
-                      : null === it
+                      : it === null
                       ? "Null"
-                      : "string" ==
-                        typeof (tag = tryGet((O = Object(it)), TO_STRING_TAG$1))
+                      : typeof (tag = tryGet((O = Object(it)), TO_STRING_TAG$1)) ==
+                        "string"
                       ? tag
                       : CORRECT_ARGUMENTS
                       ? classofRaw(O)
-                      : "Object" == (result = classofRaw(O)) &&
-                        "function" == typeof O.callee
+                      : (result = classofRaw(O)) == "Object" &&
+                        typeof O.callee == "function"
                       ? "Arguments"
                       : result;
               },
         ITERATOR$2 = wellKnownSymbol("iterator"),
         getIteratorMethod = function (it) {
-            if (null != it)
+            if (it != null)
                 return (
                     it[ITERATOR$2] || it["@@iterator"] || iterators[classof(it)]
                 );
@@ -2189,7 +2189,7 @@
                 next,
                 value,
                 O = toObject(arrayLike),
-                C = "function" == typeof this ? this : Array,
+                C = typeof this == "function" ? this : Array,
                 argumentsLength = arguments.length,
                 mapfn = argumentsLength > 1 ? arguments[1] : void 0,
                 mapping = void 0 !== mapfn,
@@ -2202,7 +2202,7 @@
                         argumentsLength > 2 ? arguments[2] : void 0,
                         2
                     )),
-                null == iteratorMethod ||
+                iteratorMethod == null ||
                     (C == Array && isArrayIteratorMethod(iteratorMethod)))
             )
                 for (
@@ -2277,7 +2277,7 @@
         path.Array.from;
     var UNSCOPABLES = wellKnownSymbol("unscopables"),
         ArrayPrototype = Array.prototype;
-    null == ArrayPrototype[UNSCOPABLES] &&
+    ArrayPrototype[UNSCOPABLES] == null &&
         objectDefineProperty.f(ArrayPrototype, UNSCOPABLES, {
             configurable: !0,
             value: objectCreate(null),
@@ -2311,7 +2311,7 @@
     var isArray =
             Array.isArray ||
             function (arg) {
-                return "Array" == classofRaw(arg);
+                return classofRaw(arg) == "Array";
             },
         flattenIntoArray = function (
             target,
@@ -2366,13 +2366,13 @@
             var C;
             return (
                 isArray(originalArray) &&
-                    ("function" != typeof (C = originalArray.constructor) ||
+                    (typeof (C = originalArray.constructor) != "function" ||
                     (C !== Array && !isArray(C.prototype))
                         ? isObject(C) &&
-                          null === (C = C[SPECIES$3]) &&
+                          (C = C[SPECIES$3]) === null &&
                           (C = void 0)
                         : (C = void 0)),
-                new (void 0 === C ? Array : C)(0 === length ? 0 : length)
+                new (void 0 === C ? Array : C)(length === 0 ? 0 : length)
             );
         };
     _export(
@@ -2401,13 +2401,13 @@
         entryUnbind("Array", "flat");
     var push = [].push,
         createMethod$1 = function (TYPE) {
-            var IS_MAP = 1 == TYPE,
-                IS_FILTER = 2 == TYPE,
-                IS_SOME = 3 == TYPE,
-                IS_EVERY = 4 == TYPE,
-                IS_FIND_INDEX = 6 == TYPE,
-                IS_FILTER_OUT = 7 == TYPE,
-                NO_HOLES = 5 == TYPE || IS_FIND_INDEX;
+            var IS_MAP = TYPE == 1,
+                IS_FILTER = TYPE == 2,
+                IS_SOME = TYPE == 3,
+                IS_EVERY = TYPE == 4,
+                IS_FIND_INDEX = TYPE == 6,
+                IS_FILTER_OUT = TYPE == 7,
+                NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
             return function ($this, callbackfn, that, specificCreate) {
                 for (
                     var value,
@@ -2503,8 +2503,7 @@
             fails(function () {
                 if (
                     descriptors &&
-                    1 !==
-                        $assign(
+                    $assign(
                             { b: 1 },
                             $assign(
                                 defineProperty({}, "a", {
@@ -2518,7 +2517,8 @@
                                 }),
                                 { b: 2 }
                             )
-                        ).b
+                        ).b !==
+                        1
                 )
                     return !0;
                 var A = {},
@@ -2529,9 +2529,9 @@
                     "abcdefghijklmnopqrst".split("").forEach(function (chr) {
                         B[chr] = chr;
                     }),
-                    7 != $assign({}, A)[symbol] ||
-                        "abcdefghijklmnopqrst" !=
-                            objectKeys($assign({}, B)).join("")
+                    $assign({}, A)[symbol] != 7 ||
+                        objectKeys($assign({}, B)).join("") !=
+                            "abcdefghijklmnopqrst"
                 );
             })
                 ? function (target, source) {
@@ -2649,7 +2649,7 @@
                 };
             if (IS_ITERATOR) iterator = iterable;
             else {
-                if ("function" != typeof (iterFn = getIteratorMethod(iterable)))
+                if (typeof (iterFn = getIteratorMethod(iterable)) != "function")
                     throw TypeError("Target is not iterable");
                 if (isArrayIteratorMethod(iterFn)) {
                     for (
@@ -2673,7 +2673,7 @@
                     throw (iteratorClose(iterator), error);
                 }
                 if (
-                    "object" == typeof result &&
+                    typeof result == "object" &&
                     result &&
                     result instanceof Result
                 )
@@ -2746,14 +2746,14 @@
         speciesConstructor = function (O, defaultConstructor) {
             var S,
                 C = anObject(O).constructor;
-            return void 0 === C || null == (S = anObject(C)[SPECIES$1])
+            return void 0 === C || (S = anObject(C)[SPECIES$1]) == null
                 ? defaultConstructor
                 : aFunction(S);
         },
         engineIsIos = /(?:iphone|ipod|ipad).*applewebkit/i.test(
             engineUserAgent
         ),
-        engineIsNode = "process" == classofRaw(global_1.process),
+        engineIsNode = classofRaw(global_1.process) == "process",
         location = global_1.location,
         set = global_1.setImmediate,
         clear = global_1.clearImmediate,
@@ -2792,7 +2792,7 @@
                 args.push(arguments[i++]);
             return (
                 (queue[++counter] = function () {
-                    ("function" == typeof fn ? fn : Function(fn)).apply(
+                    (typeof fn == "function" ? fn : Function(fn)).apply(
                         void 0,
                         args
                     );
@@ -2818,10 +2818,10 @@
               (channel.port1.onmessage = listener),
               (defer = functionBindContext(port.postMessage, port, 1)))
             : global_1.addEventListener &&
-              "function" == typeof postMessage &&
+              typeof postMessage == "function" &&
               !global_1.importScripts &&
               location &&
-              "file:" !== location.protocol &&
+              location.protocol !== "file:" &&
               !fails(post)
             ? ((defer = post),
               global_1.addEventListener("message", listener, !1))
@@ -2933,7 +2933,7 @@
             var console = global_1.console;
             console &&
                 console.error &&
-                (1 === arguments.length
+                (arguments.length === 1
                     ? console.error(a)
                     : console.error(a, b));
         },
@@ -2944,7 +2944,7 @@
                 return { error: !0, value: error };
             }
         },
-        engineIsBrowser = "object" == typeof window,
+        engineIsBrowser = typeof window == "object",
         task = task$1.set,
         SPECIES = wellKnownSymbol("species"),
         PROMISE = "Promise",
@@ -2965,7 +2965,7 @@
             document$1.createEvent &&
             global_1.dispatchEvent
         ),
-        NATIVE_REJECTION_EVENT = "function" == typeof PromiseRejectionEvent,
+        NATIVE_REJECTION_EVENT = typeof PromiseRejectionEvent == "function",
         UNHANDLED_REJECTION = "unhandledrejection",
         REJECTION_HANDLED = "rejectionhandled",
         PENDING = 0,
@@ -2982,7 +2982,7 @@
             var PROMISE_CONSTRUCTOR_SOURCE = inspectSource(PromiseConstructor),
                 GLOBAL_CORE_JS_PROMISE =
                     PROMISE_CONSTRUCTOR_SOURCE !== String(PromiseConstructor);
-            if (!GLOBAL_CORE_JS_PROMISE && 66 === engineV8Version) return !0;
+            if (!GLOBAL_CORE_JS_PROMISE && engineV8Version === 66) return !0;
             if (
                 engineV8Version >= 51 &&
                 /native code/.test(PROMISE_CONSTRUCTOR_SOURCE)
@@ -3014,7 +3014,7 @@
         isThenable = function (it) {
             var then;
             return (
-                !(!isObject(it) || "function" != typeof (then = it.then)) &&
+                !(!isObject(it) || typeof (then = it.then) != "function") &&
                 then
             );
         },
@@ -3196,9 +3196,9 @@
                     );
                 return (
                     (reaction.ok =
-                        "function" != typeof onFulfilled || onFulfilled),
+                        typeof onFulfilled != "function" || onFulfilled),
                     (reaction.fail =
-                        "function" == typeof onRejected && onRejected),
+                        typeof onRejected == "function" && onRejected),
                     (reaction.domain = engineIsNode ? process.domain : void 0),
                     (state.parent = !0),
                     state.reactions.push(reaction),
@@ -3223,7 +3223,7 @@
                     ? new OwnPromiseCapability(C)
                     : newGenericPromiseCapability(C);
             }),
-        "function" == typeof nativePromiseConstructor &&
+        typeof nativePromiseConstructor == "function" &&
             NativePromisePrototype !== Object.prototype)
     ) {
         (nativeThen = NativePromisePrototype.then),
@@ -3451,7 +3451,7 @@
             {
                 finally: function (onFinally) {
                     var C = speciesConstructor(this, getBuiltIn("Promise")),
-                        isFunction = "function" == typeof onFinally;
+                        isFunction = typeof onFinally == "function";
                     return this.then(
                         isFunction
                             ? function (x) {
@@ -3475,7 +3475,7 @@
                 },
             }
         ),
-        "function" == typeof nativePromiseConstructor)
+        typeof nativePromiseConstructor == "function")
     ) {
         var method = getBuiltIn("Promise").prototype.finally;
         nativePromiseConstructor.prototype.finally !== method &&
@@ -3537,9 +3537,9 @@
                     index = state.index++;
                 return !target || index >= target.length
                     ? ((state.target = void 0), { value: void 0, done: !0 })
-                    : "keys" == kind
+                    : kind == "keys"
                     ? { value: index, done: !1 }
-                    : "values" == kind
+                    : kind == "values"
                     ? { value: target[index], done: !1 }
                     : { value: [index, target[index]], done: !1 };
             },
@@ -3615,7 +3615,7 @@
                 isObject(it) &&
                 (void 0 !== (isRegExp = it[MATCH$1])
                     ? !!isRegExp
-                    : "RegExp" == classofRaw(it))
+                    : classofRaw(it) == "RegExp")
             );
         },
         notARegexp = function (it) {
@@ -3675,8 +3675,8 @@
     ),
         entryUnbind("String", "startsWith");
     var global$1 =
-            ("undefined" != typeof globalThis && globalThis) ||
-            ("undefined" != typeof self && self) ||
+            (typeof globalThis != "undefined" && globalThis) ||
+            (typeof self != "undefined" && self) ||
             (void 0 !== global$1 && global$1),
         support = {
             searchParams: "URLSearchParams" in global$1,
@@ -3721,8 +3721,8 @@
                 };
     function normalizeName(name) {
         if (
-            ("string" != typeof name && (name = String(name)),
-            /[^a-z0-9\-#$%&'*+.^_`|~!]/i.test(name) || "" === name)
+            (typeof name != "string" && (name = String(name)),
+            /[^a-z0-9\-#$%&'*+.^_`|~!]/i.test(name) || name === "")
         )
             throw new TypeError(
                 'Invalid character in header field name: "' + name + '"'
@@ -3730,7 +3730,7 @@
         return name.toLowerCase();
     }
     function normalizeValue(value) {
-        return "string" != typeof value && (value = String(value)), value;
+        return typeof value != "string" && (value = String(value)), value;
     }
     function iteratorFor(items) {
         var iterator = {
@@ -3809,7 +3809,7 @@
                 (this.bodyUsed = this.bodyUsed),
                     (this._bodyInit = body),
                     body
-                        ? "string" == typeof body
+                        ? typeof body == "string"
                             ? (this._bodyText = body)
                             : support.blob && Blob.prototype.isPrototypeOf(body)
                             ? (this._bodyBlob = body)
@@ -3836,7 +3836,7 @@
                                   Object.prototype.toString.call(body))
                         : (this._bodyText = ""),
                     this.headers.get("content-type") ||
-                        ("string" == typeof body
+                        (typeof body == "string"
                             ? this.headers.set(
                                   "content-type",
                                   "text/plain;charset=UTF-8"
@@ -3980,7 +3980,7 @@
                 (this.mode = input.mode),
                 (this.signal = input.signal),
                 body ||
-                    null == input._bodyInit ||
+                    input._bodyInit == null ||
                     ((body = input._bodyInit), (input.bodyUsed = !0));
         } else this.url = String(input);
         if (
@@ -3994,14 +3994,14 @@
             (this.mode = options.mode || this.mode || null),
             (this.signal = options.signal || this.signal),
             (this.referrer = null),
-            ("GET" === this.method || "HEAD" === this.method) && body)
+            (this.method === "GET" || this.method === "HEAD") && body)
         )
             throw new TypeError("Body not allowed for GET or HEAD requests");
         if (
             (this._initBody(body),
             !(
-                ("GET" !== this.method && "HEAD" !== this.method) ||
-                ("no-store" !== options.cache && "no-cache" !== options.cache)
+                (this.method !== "GET" && this.method !== "HEAD") ||
+                (options.cache !== "no-store" && options.cache !== "no-cache")
             ))
         ) {
             var reParamSearch = /([?&])_=[^&]*/;
@@ -4045,7 +4045,7 @@
                 .replace(/\r?\n[\t ]+/g, " ")
                 .split("\r")
                 .map(function (header) {
-                    return 0 === header.indexOf("\n")
+                    return header.indexOf("\n") === 0
                         ? header.substr(1, header.length)
                         : header;
                 })
@@ -4094,7 +4094,7 @@
         });
     var redirectStatuses = [301, 302, 303, 307, 308];
     Response.redirect = function (url, status) {
-        if (-1 === redirectStatuses.indexOf(status))
+        if (redirectStatuses.indexOf(status) === -1)
             throw new RangeError("Invalid status code");
         return new Response(null, {
             status: status,
@@ -4156,7 +4156,7 @@
                     request.method,
                     (function (url) {
                         try {
-                            return "" === url && global$1.location.href
+                            return url === "" && global$1.location.href
                                 ? global$1.location.href
                                 : url;
                         } catch (e) {
@@ -4165,22 +4165,22 @@
                     })(request.url),
                     !0
                 ),
-                "include" === request.credentials
+                request.credentials === "include"
                     ? (xhr.withCredentials = !0)
-                    : "omit" === request.credentials &&
+                    : request.credentials === "omit" &&
                       (xhr.withCredentials = !1),
                 "responseType" in xhr &&
                     (support.blob
                         ? (xhr.responseType = "blob")
                         : support.arrayBuffer &&
                           request.headers.get("Content-Type") &&
-                          -1 !==
-                              request.headers
+                          request.headers
                                   .get("Content-Type")
-                                  .indexOf("application/octet-stream") &&
+                                  .indexOf("application/octet-stream") !==
+                              -1 &&
                           (xhr.responseType = "arraybuffer")),
                 !init ||
-                "object" != typeof init.headers ||
+                typeof init.headers != "object" ||
                 init.headers instanceof Headers
                     ? request.headers.forEach(function (value, name) {
                           xhr.setRequestHeader(name, value);
@@ -4196,7 +4196,7 @@
                 request.signal &&
                     (request.signal.addEventListener("abort", abortXhr),
                     (xhr.onreadystatechange = function () {
-                        4 === xhr.readyState &&
+                        xhr.readyState === 4 &&
                             request.signal.removeEventListener(
                                 "abort",
                                 abortXhr
@@ -4213,7 +4213,7 @@
             (global$1.Headers = Headers),
             (global$1.Request = Request),
             (global$1.Response = Response)),
-        null == Element.prototype.getAttributeNames &&
+        Element.prototype.getAttributeNames == null &&
             (Element.prototype.getAttributeNames = function () {
                 for (
                     var attributes = this.attributes,
@@ -4254,7 +4254,7 @@
                 do {
                     if (el.matches(s)) return el;
                     el = el.parentElement || el.parentNode;
-                } while (null !== el && 1 === el.nodeType);
+                } while (el !== null && el.nodeType === 1);
                 return null;
             });
     var Connection = (function () {
@@ -4360,7 +4360,7 @@
                                             )
                                         )
                                             return;
-                                        if (419 === response.status) {
+                                        if (response.status === 419) {
                                             if (store$2.sessionHasExpired)
                                                 return;
                                             (store$2.sessionHasExpired = !0),
@@ -4394,7 +4394,7 @@
                     {
                         key: "getSocketId",
                         value: function () {
-                            if ("undefined" != typeof Echo)
+                            if (typeof Echo != "undefined")
                                 return Echo.socketId();
                         },
                     },
@@ -4411,7 +4411,7 @@
                                     });
                             var modal =
                                 document.getElementById("livewire-error");
-                            void 0 !== modal && null != modal
+                            void 0 !== modal && modal != null
                                 ? (modal.innerHTML = "")
                                 : (((modal = document.createElement("div")).id =
                                       "livewire-error"),
@@ -4440,7 +4440,7 @@
                                 }),
                                 modal.setAttribute("tabindex", 0),
                                 modal.addEventListener("keydown", function (e) {
-                                    "Escape" === e.key &&
+                                    e.key === "Escape" &&
                                         _this2.hideHtmlModal(modal);
                                 }),
                                 modal.focus();
@@ -4577,8 +4577,8 @@
                                     return (
                                         (subject = update.name),
                                         (value = dataKey),
-                                        "string" == typeof subject &&
-                                            "string" == typeof value &&
+                                        typeof subject == "string" &&
+                                            typeof value == "string" &&
                                             subject.split(".")[0] ===
                                                 value.split(".")[0]
                                     );
@@ -4600,7 +4600,7 @@
                         value: function () {
                             var returns = this.response.effects.returns || [];
                             this.updateQueue.forEach(function (update) {
-                                "callMethod" === update.type &&
+                                update.type === "callMethod" &&
                                     update.resolve(
                                         void 0 !== returns[update.signature]
                                             ? returns[update.signature]
@@ -4666,7 +4666,7 @@
                               attrNamespaceURI,
                               attrName
                           ) !== attrValue &&
-                              ("xmlns" === attr.prefix &&
+                              (attr.prefix === "xmlns" &&
                                   (attrName = attr.name),
                               fromNode.setAttributeNS(
                                   attrNamespaceURI,
@@ -4701,11 +4701,11 @@
                 var parentNode = fromEl.parentNode;
                 if (parentNode) {
                     var parentName = parentNode.nodeName.toUpperCase();
-                    "OPTGROUP" === parentName &&
+                    parentName === "OPTGROUP" &&
                         (parentName =
                             (parentNode = parentNode.parentNode) &&
                             parentNode.nodeName.toUpperCase()),
-                        "SELECT" !== parentName ||
+                        parentName !== "SELECT" ||
                             parentNode.hasAttribute("multiple") ||
                             (fromEl.hasAttribute("selected") &&
                                 !toEl.selected &&
@@ -4748,14 +4748,14 @@
 
                     )
                         if (
-                            "OPTGROUP" ===
                             (nodeName =
                                 curChild.nodeName &&
-                                curChild.nodeName.toUpperCase())
+                                curChild.nodeName.toUpperCase()) ===
+                            "OPTGROUP"
                         )
                             curChild = (optgroup = curChild).firstChild;
                         else {
-                            if ("OPTION" === nodeName) {
+                            if (nodeName === "OPTION") {
                                 if (curChild.hasAttribute("selected")) {
                                     selectedIndex = i;
                                     break;
@@ -4773,7 +4773,7 @@
         },
         range,
         NS_XHTML = "http://www.w3.org/1999/xhtml",
-        doc = "undefined" == typeof document ? void 0 : document,
+        doc = typeof document == "undefined" ? void 0 : document,
         HAS_TEMPLATE_SUPPORT =
             !!doc && "content" in doc.createElement("template"),
         HAS_RANGE_SUPPORT =
@@ -4838,7 +4838,7 @@
         return node.id;
     }
     function callHook(hook) {
-        "getNodeKey" !== hook.name && hook.name;
+        hook.name !== "getNodeKey" && hook.name;
         for (
             var _len = arguments.length,
                 params = new Array(_len > 1 ? _len - 1 : 0),
@@ -4847,15 +4847,15 @@
             _key++
         )
             params[_key - 1] = arguments[_key];
-        if ("function" == typeof params[0].hasAttribute)
+        if (typeof params[0].hasAttribute == "function")
             return hook.apply(void 0, params);
     }
     function morphdomFactory(morphAttrs) {
         return function (fromNode, toNode, options) {
-            if ((options || (options = {}), "string" == typeof toNode))
+            if ((options || (options = {}), typeof toNode == "string"))
                 if (
-                    "#document" === fromNode.nodeName ||
-                    "HTML" === fromNode.nodeName
+                    fromNode.nodeName === "#document" ||
+                    fromNode.nodeName === "HTML"
                 ) {
                     var toNodeHtml = toNode;
                     (toNode = doc.createElement("html")).innerHTML = toNodeHtml;
@@ -4931,7 +4931,7 @@
                     )
                         return;
                 }
-                "TEXTAREA" !== fromEl.nodeName
+                fromEl.nodeName !== "TEXTAREA"
                     ? (function (fromEl, toEl) {
                           var curToNodeKey,
                               curFromNodeKey,
@@ -5243,7 +5243,7 @@
                 var _this = this;
                 if (
                     store$2.initialRenderIsFinished &&
-                    "script" === el.tagName.toLowerCase()
+                    el.tagName.toLowerCase() === "script"
                 )
                     return eval(el.innerHTML), !1;
                 wireDirectives(el)
@@ -5307,13 +5307,13 @@
                         el,
                         component
                     ),
-                    "input" !== el.tagName.toLowerCase() || "file" !== el.type)
+                    el.tagName.toLowerCase() !== "input" || el.type !== "file")
                 ) {
                     var condition,
                         callback,
                         time,
                         event =
-                            "select" === el.tagName.toLowerCase() ||
+                            el.tagName.toLowerCase() === "select" ||
                             ["checkbox", "radio"].includes(el.type) ||
                             directive.modifiers.includes("lazy")
                                 ? "change"
@@ -5330,7 +5330,7 @@
                                         e instanceof CustomEvent &&
                                         void 0 !== e.detail &&
                                         void 0 === window.document.documentMode
-                                            ? null !== (_e$detail = e.detail) &&
+                                            ? (_e$detail = e.detail) !== null &&
                                               void 0 !== _e$detail
                                                 ? _e$detail
                                                 : e.target.value
@@ -5355,7 +5355,7 @@
                             navigator.userAgent
                         ) &&
                             el.addEventListener("animationstart", function (e) {
-                                "livewireautofill" === e.animationName &&
+                                e.animationName === "livewireautofill" &&
                                     (e.target.dispatchEvent(
                                         new Event("change", { bubbles: !0 })
                                     ),
@@ -5390,8 +5390,8 @@
                                         key
                                     ) {
                                         return (
-                                            ("cmd" !== key &&
-                                                "super" !== key) ||
+                                            (key !== "cmd" &&
+                                                key !== "super") ||
                                                 (key = "meta"),
                                             !e["".concat(key, "Key")]
                                         );
@@ -5399,9 +5399,9 @@
                                 )
                                     return !1;
                                 if (
-                                    32 === e.keyCode ||
-                                    " " === e.key ||
-                                    "Spacebar" === e.key
+                                    e.keyCode === 32 ||
+                                    e.key === " " ||
+                                    e.key === "Spacebar"
                                 )
                                     return directive.modifiers.includes(
                                         "space"
@@ -5415,7 +5415,7 @@
                                     }
                                 );
                                 return Boolean(
-                                    0 === modifiers.length ||
+                                    modifiers.length === 0 ||
                                         (e.key &&
                                             modifiers.includes(
                                                 kebabCase(e.key)
@@ -5469,11 +5469,11 @@
                                         method = directive.method,
                                         params = directive.params;
                                     if (
-                                        (0 === params.length &&
+                                        (params.length === 0 &&
                                             e instanceof CustomEvent &&
                                             e.detail &&
                                             params.push(e.detail),
-                                        "$emit" === method)
+                                        method === "$emit")
                                     )
                                         return (
                                             (_component$scopedList =
@@ -5486,9 +5486,9 @@
                                                 _toConsumableArray(params)
                                             )
                                         );
-                                    "$emitUp" !== method
-                                        ? "$emitSelf" !== method
-                                            ? "$emitTo" !== method
+                                    method !== "$emitUp"
+                                        ? method !== "$emitSelf"
+                                            ? method !== "$emitTo"
                                                 ? directive.value &&
                                                   component.addAction(
                                                       new _default$4(
@@ -5590,7 +5590,7 @@
                     directives.missing("loading") ||
                         directives.directives
                             .filter(function (i) {
-                                return "loading" === i.type;
+                                return i.type === "loading";
                             })
                             .forEach(function (directive) {
                                 processLoadingDirective(
@@ -5604,14 +5604,14 @@
             store$2.registerHook("message.sent", function (message, component) {
                 var actions = message.updateQueue
                         .filter(function (action) {
-                            return "callMethod" === action.type;
+                            return action.type === "callMethod";
                         })
                         .map(function (action) {
                             return action.payload.method;
                         }),
                     actionsWithParams = message.updateQueue
                         .filter(function (action) {
-                            return "callMethod" === action.type;
+                            return action.type === "callMethod";
                         })
                         .map(function (action) {
                             return generateSignatureFromMethodAndParams(
@@ -5621,7 +5621,7 @@
                         }),
                     models = message.updateQueue
                         .filter(function (action) {
-                            return "syncInput" === action.type;
+                            return action.type === "syncInput";
                         })
                         .map(function (action) {
                             var name = action.payload.name;
@@ -6067,7 +6067,7 @@
                         key: "setUpload",
                         value: function (name, uploadObject) {
                             this.uploadBag.add(name, uploadObject),
-                                1 === this.uploadBag.get(name).length &&
+                                this.uploadBag.get(name).length === 1 &&
                                     this.startUpload(name, uploadObject);
                         },
                     },
@@ -6152,9 +6152,9 @@
                                     }
                                 ),
                                 request.addEventListener("load", function () {
-                                    if ("2" !== (request.status + "")[0]) {
+                                    if ((String(request.status))[0] !== "2") {
                                         var errors = null;
-                                        422 === request.status &&
+                                        request.status === 422 &&
                                             (errors = request.response),
                                             _this2.component.call(
                                                 "uploadErrored",
@@ -6307,7 +6307,7 @@
                                     value = _ref2[1];
                                 if (
                                     value &&
-                                    "object" === _typeof(value) &&
+                                    _typeof(value) === "object" &&
                                     value.livewireEntangle
                                 ) {
                                     var livewireProperty =
@@ -6478,18 +6478,18 @@
                 isShowing(from, to) && (to.style.display = from.style.display);
     }
     function alpinifyElementsForMorphdomV3(from, to) {
-        1 === from.nodeType &&
+        from.nodeType === 1 &&
             from._x_dataStack &&
             window.Alpine.clone(from, to);
     }
     function isHiding(from, to) {
         return beforeAlpineTwoPointSevenPointThree()
-            ? "" === from.style.display && "none" === to.style.display
+            ? from.style.display === "" && to.style.display === "none"
             : from.__x_is_shown && !to.__x_is_shown;
     }
     function isShowing(from, to) {
         return beforeAlpineTwoPointSevenPointThree()
-            ? "none" === from.style.display && "" === to.style.display
+            ? from.style.display === "none" && to.style.display === ""
             : !from.__x_is_shown && to.__x_is_shown;
     }
     function beforeAlpineTwoPointSevenPointThree() {
@@ -6642,7 +6642,7 @@
                                 var _ref2 = _slicedToArray(_ref, 2),
                                     key = _ref2[0],
                                     value = _ref2[1];
-                                "data" === key
+                                key === "data"
                                     ? Object.entries(value || {}).forEach(
                                           function (_ref3) {
                                               var _ref4 = _slicedToArray(
@@ -7084,8 +7084,8 @@
                                         _this8
                                     ),
                                         from.hasAttribute("wire:model") &&
-                                            "SELECT" ===
-                                                from.tagName.toUpperCase() &&
+                                            from.tagName.toUpperCase() ===
+                                                "SELECT" &&
                                             (to.selectedIndex = -1);
                                     var fromDirectives = wireDirectives(from);
                                     if (
@@ -7307,14 +7307,14 @@
                                     if (
                                         !["_x_interceptor"].includes(property)
                                     ) {
-                                        if ("entangle" === property)
+                                        if (property === "entangle")
                                             return getEntangleFunction(
                                                 component
                                             );
-                                        if ("__instance" === property)
+                                        if (property === "__instance")
                                             return component;
                                         if (
-                                            "string" == typeof property &&
+                                            typeof property == "string" &&
                                             property.match(/^emit.*/)
                                         )
                                             return function () {
@@ -7328,14 +7328,14 @@
                                                 )
                                                     args[_key2] =
                                                         arguments[_key2];
-                                                return "emitSelf" === property
+                                                return property === "emitSelf"
                                                     ? store$2.emitSelf.apply(
                                                           store$2,
                                                           [component.id].concat(
                                                               args
                                                           )
                                                       )
-                                                    : "emitUp" === property
+                                                    : property === "emitUp"
                                                     ? store$2.emitUp.apply(
                                                           store$2,
                                                           [component.el].concat(
@@ -7413,8 +7413,8 @@
             "interceptWireModelAttachListener",
             function (directive, el, component) {
                 if (
-                    "input" === el.tagName.toLowerCase() &&
-                    "file" === el.type
+                    el.tagName.toLowerCase() === "input" &&
+                    el.type === "file"
                 ) {
                     var finish = function () {
                             return el.dispatchEvent(
@@ -7443,7 +7443,7 @@
                             );
                         },
                         eventHandler = function (e) {
-                            0 !== e.target.files.length &&
+                            e.target.files.length !== 0 &&
                                 (el.dispatchEvent(
                                     new CustomEvent("livewire-upload-start", {
                                         bubbles: !0,
@@ -7486,14 +7486,14 @@
             Array.isArray(component.listeners) &&
                 component.listeners.forEach(function (event) {
                     if (event.startsWith("echo")) {
-                        if ("undefined" == typeof Echo)
+                        if (typeof Echo == "undefined")
                             return void console.warn(
                                 "Laravel Echo cannot be found"
                             );
                         var event_parts = event.split(/(echo:|echo-)|:|,/);
-                        "echo:" == event_parts[1] &&
+                        event_parts[1] == "echo:" &&
                             event_parts.splice(2, 0, "channel", void 0),
-                            "notification" == event_parts[2] &&
+                            event_parts[2] == "notification" &&
                                 event_parts.push(void 0, void 0);
                         var _event_parts = _slicedToArray(event_parts, 7);
                         _event_parts[0], _event_parts[1];
@@ -7511,7 +7511,7 @@
                                       store$2.emit(event, e);
                                   }
                               )
-                            : "presence" == channel_type
+                            : channel_type == "presence"
                             ? ["here", "joining", "leaving"].includes(
                                   event_name
                               )
@@ -7524,7 +7524,7 @@
                                           store$2.emit(event, e);
                                       }
                                   )
-                            : "notification" == channel_type
+                            : channel_type == "notification"
                             ? Echo.private(channel).notification(function (
                                   notification
                               ) {
@@ -7650,13 +7650,13 @@
                             if (el.contains(node))
                                 return (
                                     !node.hasAttribute("wire:ignore") &&
-                                    void (("button" ===
-                                        node.tagName.toLowerCase() &&
-                                        "submit" === node.type) ||
-                                    "select" === node.tagName.toLowerCase() ||
-                                    ("input" === node.tagName.toLowerCase() &&
-                                        ("checkbox" === node.type ||
-                                            "radio" === node.type))
+                                    void ((node.tagName.toLowerCase() ===
+                                        "button" &&
+                                        node.type === "submit") ||
+                                    node.tagName.toLowerCase() === "select" ||
+                                    (node.tagName.toLowerCase() === "input" &&
+                                        (node.type === "checkbox" ||
+                                            node.type === "radio"))
                                         ? (node.disabled ||
                                               cleanupStackByComponentId[
                                                   component.id
@@ -7664,10 +7664,10 @@
                                                   return (node.disabled = !1);
                                               }),
                                           (node.disabled = !0))
-                                        : ("input" !==
-                                              node.tagName.toLowerCase() &&
-                                              "textarea" !==
-                                                  node.tagName.toLowerCase()) ||
+                                        : (node.tagName.toLowerCase() !==
+                                              "input" &&
+                                              node.tagName.toLowerCase() !==
+                                                  "textarea") ||
                                           (node.readOnly ||
                                               cleanupStackByComponentId[
                                                   component.id
@@ -7731,7 +7731,7 @@
                     : 512,
             byteCharacters = atob(b64Data),
             byteArrays = [];
-        null === contentType && (contentType = "");
+        contentType === null && (contentType = "");
         for (
             var offset = 0;
             offset < byteCharacters.length;
@@ -7923,13 +7923,13 @@
                     component
                 );
                 try {
-                    "undefined" != decodeURI(url) &&
+                    decodeURI(url) != "undefined" &&
                         (url = decodeURI(url)
                             .replaceAll(" ", "+")
                             .replaceAll("\\", "%5C")),
                         history[method](fullstateObject, "", url);
                 } catch (error) {
-                    if ("NS_ERROR_ILLEGAL_VALUE" === error.name) {
+                    if (error.name === "NS_ERROR_ILLEGAL_VALUE") {
                         var key = this.storeInSession(stateArray);
                         (fullstateObject.livewire = key),
                             history[method](fullstateObject, "", url);
@@ -7938,7 +7938,7 @@
             },
             replayResponses: function (event, callback) {
                 event.state.livewire &&
-                    ("string" == typeof event.state.livewire
+                    (typeof event.state.livewire == "string"
                         ? new LivewireState(
                               this.getFromSession(event.state.livewire)
                           )
@@ -7947,7 +7947,7 @@
             },
             currentState: function () {
                 return history.state && history.state.livewire
-                    ? "string" == typeof history.state.livewire
+                    ? typeof history.state.livewire == "string"
                         ? new LivewireState(
                               this.getFromSession(history.state.livewire)
                           )
@@ -8022,7 +8022,7 @@
                                 ) {
                                     return item.signature === signature;
                                 });
-                            if (-1 !== existingIndex)
+                            if (existingIndex !== -1)
                                 return (this.items[existingIndex] = targetItem);
                             var closestParentId = store$2.getClosestParentId(
                                 component.id,
@@ -8167,7 +8167,7 @@
                         ) {
                             var frag = createFragment(contents);
                             updates.push(function () {
-                                return "push" === type
+                                return type === "push"
                                     ? ((el = frag),
                                       endEl.parentElement.insertBefore(
                                           el,
