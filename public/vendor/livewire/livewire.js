@@ -2767,7 +2767,7 @@
         channel,
         port,
         run = function (id) {
-            if (queue.hasOwnProperty(id)) {
+            if (Object.prototype.hasOwnProperty.call(queue, id)) {
                 var fn = queue[id];
                 delete queue[id], fn();
             }
@@ -3695,7 +3695,7 @@
             arrayBuffer: "ArrayBuffer" in global$1,
         };
     function isDataView(obj) {
-        return obj && DataView.prototype.isPrototypeOf(obj);
+        return obj && Object.prototype.isPrototypeOf.call(DataView.prototype, obj);
     }
     if (support.arrayBuffer)
         var viewClasses = [
@@ -3811,13 +3811,13 @@
                     body
                         ? typeof body == "string"
                             ? (this._bodyText = body)
-                            : support.blob && Blob.prototype.isPrototypeOf(body)
+                            : support.blob && Object.prototype.isPrototypeOf.call(Blob.prototype, body)
                             ? (this._bodyBlob = body)
                             : support.formData &&
-                              FormData.prototype.isPrototypeOf(body)
+                              Object.prototype.isPrototypeOf.call(FormData.prototype, body)
                             ? (this._bodyFormData = body)
                             : support.searchParams &&
-                              URLSearchParams.prototype.isPrototypeOf(body)
+                              Object.prototype.isPrototypeOf.call(URLSearchParams.prototype, body)
                             ? (this._bodyText = body.toString())
                             : support.arrayBuffer &&
                               support.blob &&
@@ -3829,7 +3829,7 @@
                                   this._bodyArrayBuffer,
                               ])))
                             : support.arrayBuffer &&
-                              (ArrayBuffer.prototype.isPrototypeOf(body) ||
+                              (Object.prototype.isPrototypeOf.call(ArrayBuffer.prototype, body) ||
                                   isArrayBufferView(body))
                             ? (this._bodyArrayBuffer = bufferClone(body))
                             : (this._bodyText = body =
@@ -3847,7 +3847,7 @@
                                   this._bodyBlob.type
                               )
                             : support.searchParams &&
-                              URLSearchParams.prototype.isPrototypeOf(body) &&
+                              Object.prototype.isPrototypeOf.call(URLSearchParams.prototype, body) &&
                               this.headers.set(
                                   "content-type",
                                   "application/x-www-form-urlencoded;charset=UTF-8"
