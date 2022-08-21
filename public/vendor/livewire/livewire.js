@@ -5259,10 +5259,7 @@
                                 break;
                             case "model":
                                 if (!directive.value) {
-                                    console.warn(
-                                        "Livewire: [wire:model] is missing a value.",
-                                        el
-                                    );
+                                    
                                     break;
                                 }
                                 DOM.setInputValueFromModel(el, component),
@@ -6273,9 +6270,7 @@
                   var wireEl = el.closest("[wire\\:id]");
                   return (
                       wireEl ||
-                          console.warn(
-                              'Alpine: Cannot reference "$wire" outside a Livewire component.'
-                          ),
+                          {},
                       wireEl.__livewire.$wire
                   );
               })
@@ -6284,9 +6279,7 @@
                   var wireEl = componentEl.closest("[wire\\:id]");
                   return (
                       wireEl ||
-                          console.warn(
-                              'Alpine: Cannot reference "$wire" outside a Livewire component.'
-                          ),
+                          {},
                       wireEl.__livewire.$wire
                   );
               });
@@ -6320,12 +6313,7 @@
                                                 livewireProperty
                                             );
                                     if (void 0 === livewirePropertyValue)
-                                        return void console.error(
-                                            "Livewire Entangle Error: Livewire property '".concat(
-                                                livewireProperty,
-                                                "' cannot be found"
-                                            )
-                                        );
+                                        return void {}
                                     component.unobservedData[key] = JSON.parse(
                                         JSON.stringify(livewirePropertyValue)
                                     );
@@ -6422,12 +6410,7 @@
                                       value
                                   );
                               }
-                              console.error(
-                                  "Livewire Entangle Error: Livewire property '".concat(
-                                      livewireProperty,
-                                      "' cannot be found"
-                                  )
-                              );
+                              
                           },
                           function (obj) {
                               Object.defineProperty(obj, "defer", {
@@ -6592,10 +6575,7 @@
                                 carryCount + newlyDiscoveredEls
                             );
                         })(this.el.nextSibling) > 0 &&
-                            console.warn(
-                                "Livewire: Multiple root elements detected. This is not supported. See docs for more information https://laravel-livewire.com/docs/2.x/troubleshooting#root-element-issues",
-                                this.el
-                            );
+                            {}
                     },
                 },
                 {
@@ -7487,9 +7467,7 @@
                 component.listeners.forEach(function (event) {
                     if (event.startsWith("echo")) {
                         if (typeof Echo == "undefined")
-                            return void console.warn(
-                                "Laravel Echo cannot be found"
-                            );
+                            return void {}
                         var event_parts = event.split(/(echo:|echo-)|:|,/);
                         event_parts[1] == "echo:" &&
                             event_parts.splice(2, 0, "channel", void 0),
@@ -7530,9 +7508,7 @@
                               ) {
                                   store$2.emit(event, notification);
                               })
-                            : console.warn(
-                                  "Echo channel type not yet supported"
-                              );
+                            : {}
                     }
                 });
         });
@@ -8101,11 +8077,7 @@
                             return (
                                 sameNamedComponents[componentIndex] ||
                                 sameNamedComponents[0] ||
-                                console.warn(
-                                    "Livewire: couldn't find component on page: ".concat(
-                                        componentName
-                                    )
-                                )
+                                {}
                             );
                         },
                     },

@@ -41,7 +41,7 @@ inputCEP.addEventListener('focusout', event => {
       if (dadosCEP.logradouro && dadosCEP.bairro) {
         inputRoad.value = dadosCEP.logradouro
         inputDistrict.value = dadosCEP.bairro
-        console.log(inputDistrict.value)
+        
       }
       else {
         inputRoad.value = "CEP inválido!"
