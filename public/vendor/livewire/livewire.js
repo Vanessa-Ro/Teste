@@ -795,7 +795,7 @@
                 });
             },
             hasComponent: function (id) {
-                return !!this.componentsById[id];
+                return Boolean(this.componentsById[id]);
             },
             tearDownComponents: function () {
                 var _this2 = this;
@@ -1073,7 +1073,7 @@
                             : getValue(component.data, modelName);
                     return Array.isArray(modelValue)
                         ? this.mergeCheckboxValueIntoArray(el, modelValue)
-                        : !!el.checked && (el.getAttribute("value") || !0);
+                        : Boolean(el.checked) && (el.getAttribute("value") || !0);
                 }
                 return el.tagName === "SELECT" && el.multiple
                     ? this.getSelectValues(el)
@@ -1107,7 +1107,7 @@
                             val == el.value && (valueFound = !0);
                         }),
                             (el.checked = valueFound);
-                    } else el.checked = !!value;
+                    } else el.checked = Boolean(value);
                 else
                     el.tagName === "SELECT"
                         ? this.updateSelect(el, value)
@@ -1125,7 +1125,7 @@
             },
             updateSelect: function (el, value) {
                 var arrayWrappedValue = [].concat(value).map(function (value) {
-                    return value + "";
+                    return String(value);
                 });
                 Array.from(el.options).forEach(function (option) {
                     option.selected = arrayWrappedValue.includes(option.value);
@@ -1135,7 +1135,7 @@
         ceil = Math.ceil,
         floor = Math.floor,
         toInteger = function (argument) {
-            return isNaN((argument = +argument))
+            return isNaN((argument = Number(argument)))
                 ? 0
                 : (argument > 0 ? floor : ceil)(argument);
         },
@@ -1218,7 +1218,7 @@
             function () { return this }(),
         fails = function (exec) {
             try {
-                return !!exec();
+                return Boolean(exec());
             } catch (error) {
                 return !0;
             }
@@ -1448,7 +1448,7 @@
         f$4 = NASHORN_BUG
             ? function (V) {
                   var descriptor = getOwnPropertyDescriptor$3(this, V);
-                  return !!descriptor && descriptor.enumerable;
+                  return Boolean(descriptor) && descriptor.enumerable;
               }
             : $propertyIsEnumerable,
         objectPropertyIsEnumerable = { f: f$4 },
@@ -1494,9 +1494,9 @@
                 TEMPLATE = String(String).split("String");
             (module.exports = function (O, key, value, options) {
                 var state,
-                    unsafe = !!options && !!options.unsafe,
-                    simple = !!options && !!options.enumerable,
-                    noTargetGet = !!options && !!options.noTargetGet;
+                    unsafe = Boolean(options) && Boolean(options.unsafe),
+                    simple = Boolean(options) && Boolean(options.enumerable),
+                    noTargetGet = Boolean(options) && Boolean(options.noTargetGet);
                 typeof value == "function" &&
                     (typeof key != "string" ||
                         has$1(value, "name") ||
@@ -1634,7 +1634,7 @@
                 (value != NATIVE &&
                     (typeof detection == "function"
                         ? fails(detection)
-                        : !!detection))
+                        : Boolean(detection)))
             );
         },
         normalize = (isForced.normalize = function (string) {
@@ -1725,9 +1725,9 @@
           (!match || match[1] >= 74) &&
               ((match = engineUserAgent.match(/Chrome\/(\d+)/)),
               match && (version = match[1])));
-    var engineV8Version = version && +version,
+    var engineV8Version = version && Number(version),
         nativeSymbol =
-            !!Object.getOwnPropertySymbols &&
+            Boolean(Object.getOwnPropertySymbols) &&
             !fails(function () {
                 var symbol = Symbol();
                 return (
@@ -2236,7 +2236,7 @@
         var called = 0,
             iteratorWithReturn = {
                 next: function () {
-                    return { done: !!called++ };
+                    return { done: Boolean(called++) };
                 },
                 return: function () {
                     SAFE_CLOSING = !0;
@@ -2327,7 +2327,7 @@
                 var element,
                     targetIndex = start,
                     sourceIndex = 0,
-                    mapFn = !!mapper && functionBindContext(mapper, thisArg, 3);
+                    mapFn = Boolean(mapper) && functionBindContext(mapper, thisArg, 3);
                 sourceIndex < sourceLen;
 
             ) {
@@ -2782,7 +2782,7 @@
         },
         post = function (id) {
             global_1.postMessage(
-                id + "",
+                String(id),
                 location.protocol + "//" + location.host
             );
         };
@@ -2960,11 +2960,9 @@
         process = global_1.process,
         newPromiseCapability = newPromiseCapability$1.f,
         newGenericPromiseCapability = newPromiseCapability,
-        DISPATCH_EVENT = !!(
-            document$1 &&
+        DISPATCH_EVENT = Boolean(document$1 &&
             document$1.createEvent &&
-            global_1.dispatchEvent
-        ),
+            global_1.dispatchEvent),
         NATIVE_REJECTION_EVENT = typeof PromiseRejectionEvent == "function",
         UNHANDLED_REJECTION = "unhandledrejection",
         REJECTION_HANDLED = "rejectionhandled",
@@ -3438,7 +3436,7 @@
         }
     );
     var NON_GENERIC =
-        !!nativePromiseConstructor &&
+        Boolean(nativePromiseConstructor) &&
         fails(function () {
             nativePromiseConstructor.prototype.finally.call(
                 { then: function () {} },
@@ -3614,7 +3612,7 @@
             return (
                 isObject(it) &&
                 (void 0 !== (isRegExp = it[MATCH$1])
-                    ? !!isRegExp
+                    ? Boolean(isRegExp)
                     : classofRaw(it) == "RegExp")
             );
         },
@@ -4070,7 +4068,7 @@
             (this.status = void 0 === options.status ? 200 : options.status),
             (this.ok = this.status >= 200 && this.status < 300),
             (this.statusText =
-                void 0 === options.statusText ? "" : "" + options.statusText),
+                void 0 === options.statusText ? "" : String(options.statusText)),
             (this.headers = new Headers(options.headers)),
             (this.url = options.url || ""),
             this._initBody(bodyInit);
@@ -4386,9 +4384,9 @@
                     {
                         key: "isOutputFromDump",
                         value: function (output) {
-                            return !!output.match(
+                            return Boolean(output.match(
                                 /<script>Sfdump\(".+"\)<\/script>/
-                            );
+                            ));
                         },
                     },
                     {
@@ -4775,9 +4773,9 @@
         NS_XHTML = "http://www.w3.org/1999/xhtml",
         doc = typeof document == "undefined" ? void 0 : document,
         HAS_TEMPLATE_SUPPORT =
-            !!doc && "content" in doc.createElement("template"),
+            Boolean(doc) && "content" in doc.createElement("template"),
         HAS_RANGE_SUPPORT =
-            !!doc &&
+            Boolean(doc) &&
             doc.createRange &&
             "createContextualFragment" in doc.createRange();
     function createFragmentFromTemplate(str) {
@@ -4809,11 +4807,9 @@
             toNodeName = toEl.nodeName;
         return (
             fromNodeName === toNodeName ||
-            (!!(
-                toEl.actualize &&
+            (Boolean(toEl.actualize &&
                 fromNodeName.charCodeAt(0) < 91 &&
-                toNodeName.charCodeAt(0) > 90
-            ) &&
+                toNodeName.charCodeAt(0) > 90) &&
                 fromNodeName === toNodeName.toUpperCase())
         );
     }
@@ -5551,8 +5547,8 @@
                     {
                         key: "actionPrefetchResponseHasBeenReceived",
                         value: function (action) {
-                            return !!this.getPrefetchMessageByAction(action)
-                                .response;
+                            return Boolean(this.getPrefetchMessageByAction(action)
+                                .response);
                         },
                     },
                     {
