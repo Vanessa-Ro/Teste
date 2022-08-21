@@ -35,7 +35,7 @@ let btnlogin = document.querySelector("#showPassLogin");
 btnlogin.addEventListener("click", function () {
   let inputlogin = document.querySelector("#passwordLogin");
   let eyelogin = document.querySelector("#eyeLogin");
-  console.log("teste");
+  
   if (inputlogin.getAttribute("type") == "password") {
     inputlogin.setAttribute("type", "text");
     eyelogin.classList.add("icon-eye");
