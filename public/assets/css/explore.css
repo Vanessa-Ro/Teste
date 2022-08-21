@@ -1,0 +1,389 @@
+/* container */
+body > div.container {
+    padding-top: 2.38rem;
+}
+
+/* Título da página */
+.title {
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    font-size: 36px;
+}
+
+/* Pesquisa */
+.search {
+    width: 43.75rem;
+    height: 3.32rem;
+    margin: auto;
+}
+
+.form-control {
+    border: 0.03rem solid var(--gray);
+    border-radius: 8px;
+    padding-left: 3rem;
+}
+
+.icon {
+    position: absolute;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+i.icon-search {
+    font-size: 20px;
+}
+
+input:focus,
+input:hover,
+button:focus,
+button:hover,
+textarea:focus,
+textarea:hover {
+    box-shadow: none !important;
+    border-color: var(--gray) !important;
+    outline: 0;
+}
+
+/* card */
+.grid-item {
+    width: 22.69rem;
+    height: 17rem;
+    background: black;
+    border-radius: 8px;
+    border: none;
+}
+
+.local-image {
+    position: relative;
+}
+
+.grid-container {
+    margin-bottom: 1.8rem;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 2rem;
+}
+
+.card-body {
+    padding: 0 0 1rem 0;
+}
+
+/* Imagem do local */
+.card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 17rem;
+    border-radius: 5px;
+}
+
+/* Botão Publicação */
+.open-image {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 22.69rem;
+    height: 17rem;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.open-image:hover {
+    visibility: visible;
+    opacity: 1;
+}
+
+.btn-see-more {
+    width: 9.44rem;
+    height: 2.68rem;
+    border-radius: 5px;
+    border: 1px var(--white) solid;
+    background-color: transparent;
+    color: var(--white);
+    visibility: visible;
+    opacity: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Abrir publicação */
+.modal {
+    overflow-y: hidden;
+}
+
+.modal-body-explore {
+    padding: 0;
+    display: grid;
+    grid-template-areas:
+        "img modal-header-explore"
+        "img comment-publication";
+}
+
+.modal-dialog-explore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 60rem;
+    margin: auto;
+    height: calc(100vh - 52.5px);
+}
+
+.modal-content {
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-header-explore {
+    justify-content: space-between;
+    padding: 0;
+    align-items: center;
+    height: 4.87rem;
+    border-bottom: 1px solid #efefef;
+    width: 100%;
+    grid-area: modal-header-explore;
+}
+
+.modal-image {
+    object-fit: cover;
+    width: 100%;
+    height: 29rem;
+    border-radius: 5px;
+}
+
+.comment-publication {
+    grid-area: comment-publication;
+}
+
+.close {
+    border: none;
+    background: transparent;
+    padding-right: 1rem;
+}
+
+.close-publication {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-post {
+    font-size: 35px;
+    color: var(--white-gray);
+}
+
+.img-publication {
+    object-fit: cover;
+    width: 100%;
+    height: 29rem;
+    border-radius: 5px 0 0 5px;
+    grid-area: img;
+}
+
+.comment {
+    width: 22rem;
+    margin-right: 1rem;
+    display: flex;
+    margin-top: -24.75rem;
+}
+
+.user {
+    display: flex;
+    margin: 0.87rem;
+    margin-left: 1rem;
+}
+
+.user-image {
+    border-radius: 50%;
+    width: 2.7rem;
+    height: 2.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.user-image img {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+p.user-name {
+    margin-bottom: 0;
+    margin-left: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.user-localization {
+    margin-left: 1.1rem;
+    color: #8e8e8e;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.user-comment {
+    margin-top: 1rem;
+}
+
+.name-comment {
+    font-weight: 600;
+    font-size: 16px;
+    margin-right: 0.3rem;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #8e8e8e;
+    margin-left: 4.56rem;
+    text-transform: uppercase;
+}
+
+.report {
+    border: none;
+    background: transparent;
+    margin-right: 1rem;
+}
+
+.icon-alert-triangle {
+    font-size: 18px;
+    color: var(--pink);
+}
+
+/* Media Screen */
+@media screen and (max-width: 1700px) {
+    .grid-container {
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .grid-container {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .modal {
+        overflow: auto;
+    }
+
+    .modal-dialog-explore {
+        height: calc(100vh + 200px);
+    }
+
+    .modal-body-explore {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .modal-header-explore {
+        order: -1;
+        border: none;
+    }
+
+    .modal-content {
+        width: 70%;
+    }
+
+    .img-publication {
+        border-radius: 0;
+    }
+
+    .comment {
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .user-comment {
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .grid-container {
+        grid-template-columns: auto;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0;
+        grid-gap: 2rem;
+    }
+
+    .grid-item {
+        width: 80%;
+        height: 100% !important;
+    }
+
+    .card-img-top {
+        width: 100%;
+    }
+
+    .search {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .form-control {
+        width: 35rem;
+    }
+
+    .search {
+        justify-content: center;
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .search {
+        width: 0;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .form-control {
+        width: 28rem;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .modal-content {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .form-control {
+        width: 24rem;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .modal-content {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .open-image {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .form-control {
+        width: 18.5rem;
+    }
+}
