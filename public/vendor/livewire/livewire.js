@@ -1215,7 +1215,7 @@
             (function () {
                 return this;
             })() ||
-            Function("return this")(),
+            function () { return this }(),
         fails = function (exec) {
             try {
                 return !!exec();
