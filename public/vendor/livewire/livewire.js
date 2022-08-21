@@ -6152,7 +6152,7 @@
                                     }
                                 ),
                                 request.addEventListener("load", function () {
-                                    if ((request.status + "")[0] !== "2") {
+                                    if ((String(request.status))[0] !== "2") {
                                         var errors = null;
                                         request.status === 422 &&
                                             (errors = request.response),
